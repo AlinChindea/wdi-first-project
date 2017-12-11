@@ -39,7 +39,7 @@ h1 {
 
 #stripe {
   width: 935px;
-  background: salmon;
+  background: #ffeead;
   height: 30px;
   display: flex;
   align-items: center;
@@ -70,7 +70,7 @@ button {
 
 button:hover {
   color: white;
-  background: dodgerblue;
+  background: #ff6f69;
 }
 
 .hoverdown {
@@ -104,7 +104,7 @@ main {
   margin-right: 0;
   display: flex;
   justify-content: center;
-  background-color: lightblue;
+  background-color: #99ccff;
   width: 935px;
   justify-content: space-between;
 }
@@ -118,7 +118,7 @@ main {
 }
 .square {
 	width: calc(33.3% - 20px);
-	background-image: url("../images/bearded-seal.png");
+	background-image: url("../images/harp-seal.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -140,11 +140,23 @@ main {
 }
 
 #timer {
-  border: 1px solid red;
+  border-radius: 15px;
+  font-family: 'Mukta Vaani', sans-serif;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-weight: 400;
+  background-color: mediumseagreen;
   margin-bottom: 20px;
 }
 
 .score {
-  border: 1px solid green;
+  border-radius: 15px;
+  font-family: 'Mukta Vaani', sans-serif;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-weight: 400;
+  background-color: mediumseagreen;
   margin-top: 10px;
 }

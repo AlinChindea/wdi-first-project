@@ -39,39 +39,51 @@ $(() => {
     });
   }
 
-  //TIMER
-  const $startTime = $('#reset');
-  let timerIsRunning = false;
-  let timerId = null;
 
-  function startStopTimer(duration, $display) {
-    let timer = duration;
-    // start the timer if it is NOT running
-    if(!timerIsRunning){
-      timerId = setInterval(() => {
-        --timer;
-        let minutes = parseInt(timer / 60, 10);
-        let seconds = parseInt(timer % 60, 10);
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        $display.text(minutes + ':' + seconds);
-        if(timer  === 0) {
-          clearInterval(timerId);
-          // $timer.addClass('ringing');
-        }
-      }, 1000);
-      timerIsRunning = true;
+  // mammalsAndSounds = [];
+  // while (mammals.length > 0) {
+  //   const randomImage = Math.floor(Math.random() *mammals.length);
+  //   const randomMammal = mammals.splice(randomImage, 1)[0];
+  //   mammalsAndSounds.push(randomMammal);
+  //   console.log(mammalsAndSounds);
+  // }
+
+  //creating an array to store all card objects
+  let photosInPLay = [];
+  let photos = [
+    {
+    name: 'bearded seal',
+    imageSrc: '../images/bearded-seal.png',
+    id: 1
+  },
+  {
+    name: 'beluga white whale',
+    imageSrc: '..images/beluga-white-whale.png',
+    id: 2
+  },
+  {
+    name: 'leopard seal',
+    imageSrc: '..images/leopard-seal.png',
+    id: 3
+  },
+  {
+    name: 'killer whale',
+    imageSrc: '..images/killer-whale.png',
+    id: 4
+  },
+  {
+    name: 'narwhal',
+    imageSrc: '..images/narwhal.png',
+    id: 5
+  },
+  {
+    name: 'common dolphin',
+    imageSrc: '..images/common-dolphin.png',
+    id: 6
+  }
+  ];
+
+  //check for matching
+
     }
   }
-  function startTimer() {
-    const twoMinutes = 120;
-    const $timerScreen = $('#time');
-    startStopTimer(twoMinutes, $timerScreen);
-  }
-  $startTime.on('click', startTimer);
-
-
-
-
-
-});
