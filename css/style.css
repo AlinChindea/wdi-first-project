@@ -1,0 +1,145 @@
+body {
+  background-color: #232323;
+  margin: 0 auto;
+  max-width: 935px;
+}
+
+h1 {
+  text-align: center;
+  line-height: 1.1;
+  font-weight: 400;
+  font-size: 45px;
+  font-family: 'Bungee Inline', cursive, sans-serif;
+  color: white;
+  background: mediumseagreen;
+  margin: 0;
+  text-transform: uppercase;
+  padding: 20px 0;
+}
+
+.header-wrapper {
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  justify-content: center;
+}
+
+/*header {
+width: 935px;
+height: 30px;
+padding: 0 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}*/
+
+#display {
+  display: inline-block;
+  width: 20%;
+}
+
+#stripe {
+  width: 750px;
+  background: white;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+}
+
+.selected {
+  color: white;
+  background: dodgerblue;
+}
+
+button {
+  border: none;
+  background: none;
+  text-transform:  uppercase;
+  height: 100%;
+  font-weight: 700;
+  color: dodgerblue;
+  letter-spacing: 1px;
+  font-size: inherit;
+  transition: all 0.3s;
+  /*-webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;*/
+  outline: none;
+}
+
+button:hover {
+  color: white;
+  background: dodgerblue;
+}
+
+.hoverdown {
+  position: relative;
+  display: inline-block;
+}
+
+.hoverdown-content {
+  display: none;
+  position: absolute;
+  background-color: dodgerblue;
+  padding-right: 0.75rem;
+  min-width: 500px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.hoverdown p {
+  color: white;
+  font-family: 'Mukta Vaani', sans-serif;
+  padding: 12px 16px;
+  display: block;
+}
+
+.hoverdown:hover .hoverdown-content {
+    display: block;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+main {
+  width: 935px;
+  padding: 60px 20px 0;
+}
+
+.grid-wrapper {
+  max-width: 750px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.grid-wrapper ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid-wrapper ul li {
+  margin-bottom: 30px;
+  width: calc(25% - 20px);
+  position: relative;
+}
+
+.grid-wrapper ul li img {
+  display: block; /*to remove the additional whitespace below 'inline' images*/
+}
+
+.grid-wrapper ul li:after {
+  color: white;
+  text-shadow: 0px 0px 3px rgba(150, 150, 150, 0.5);
+  font-size: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
