@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   <title>My First Website Online</title>
   <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Chelsea+Market|Mukta+Vaani" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="./js/script.js"></script>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   <audio id="audio">
-      Your browser does not support audio.
-    </audio>
-  <h1>Whale, whale, whale</h1>
-  <div class ="header-wrapper">
+    Your browser does not support audio.
+  </audio>
+  <div class="wrapper">
     <header>
+      <h1>Whale, whale, whale</h1>
       <nav id="stripe">
         <button id="reset">New Game</button>
         <div class="hoverdown">
@@ -27,29 +28,36 @@
         <button class="mode">Easy</button>
         <button class="mode selected">Hard</button>
       </nav>
-
     </header>
   </div>
-  <main>
-    <div class="page-wrapper">
-      <div class="grid-wrapper">
-        <ul>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-          <li><img src="images/back.png" alt="Image1"></li>
-        </ul>
-
+  <div class="wrapper">
+    <main>
+      <div class="grid">
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
       </div>
-    </div>
-  </main>
+
+      <div class ="timescore">
+        <div id="timer">
+          <button id="reset"></button>
+          <button id="startStop"></button>
+          <div class="screen">Time left: <span id='time'>02:00</span> minutes!</div>
+        </div>
+        <div class="score">
+          Your result:
+        </div>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
