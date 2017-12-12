@@ -1,4 +1,3 @@
-// let numSquares = 12;
 let mammalsAndSounds = []; //an emtpy array where matched images and sounds should be pushed
 
 let gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']; //the ids of the gameboard
@@ -12,19 +11,19 @@ function createPairs() {
     const randomNumber = Math.floor(Math.random() * gameBoard.length);
     const randomCard = gameBoard.splice(randomNumber, 1)[0];
     mammalsAndSounds.push(randomCard);
-    console.log(mammalsAndSounds);
   }
   gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 }
 
 $(() => {
 
-//on window load, cards are facedown and cards can't be clicked
+//on window load,x cards are facedown and cards can't be clicked
   const initialBoard = function () {
     for (let i = 1; i <= mammals.length; i++) {
       const $card = $(`#card-${i}`);
       // console.log($card);
       $card.css('background-image', 'images/finback-whale.png');
+      // $('.instructions').animate({zoom: '110%'}, 400, 'swing');
     }
   };
   initialBoard();
@@ -77,6 +76,8 @@ $(() => {
   }
   $startTime.on('click', startTimer);
 
+
+  //flipping a card
   let cardsInPlay = [];
   let cardsInPlayIds = [];
 
@@ -96,6 +97,7 @@ $(() => {
     }
   }
 
+
   //if cards flipped are a pair, remove these from the grid; else turn them back and display "try again"
 
   const $messageDisplay = $('#display');
@@ -110,6 +112,10 @@ $(() => {
     }
     cardsInPlayIds = [];
   }
+
+  // function flip() {
+  //
+  // }
 
   //winning/losing - if all cards have been matched before time runs out, display, you rock; time stops at that particular time and result is logged in the result div -
 
