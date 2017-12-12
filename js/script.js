@@ -29,16 +29,6 @@ $(() => {
   };
   initialBoard();
 
-
-
-  //if cards flipped are a pair, remove these from the grid; else turn them back and display "try again"
-
-  //winning/losing - if all cards have been matched before time runs out, display, you rock; time stops at that particular time and result is logged in the result div -
-
-
-
-
-
   //must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
   const $squares = $('.square');
   function matchImagesToSquares() {
@@ -80,20 +70,23 @@ $(() => {
 
   //clicking new game starts the game: timer starts running and cards can be flipped
   function startTimer() {
-    const twoMinutes = 120;
+    const oneMinute = 60;
     const $timerScreen = $('#time');
     $squares.on('click', flipCard);
-    startStopTimer(5, $timerScreen);
+    startStopTimer(oneMinute, $timerScreen);
   }
   $startTime.on('click', startTimer);
 
   let cardsInPlay = [];
+  let cardsInPlayIds = [];
 
   function flipCard (e) {
-    const cardIdAttribute = $(e.target).attr('id');;
-    const cardId = parseInt(cardIdAttribute.substr(5,2))
+    const cardIdAttribute = $(e.target).attr('id');
+    let cardId = parseInt(cardIdAttribute.substr(5,2));
+    cardsInPlayIds.push(cardId);
+    cardId = --cardId;
     cardsInPlay.push(mammals[cardId]);
-    console.log(cardsInPlay)
+    // console.log(cardsInPlay);
     $(e.target).css('background-image', `url(images/${mammals[cardId]})`);
     if (cardsInPlay.length === 2) {
     // If so, call the checkForMatch function
@@ -103,16 +96,24 @@ $(() => {
     }
   }
 
+  //if cards flipped are a pair, remove these from the grid; else turn them back and display "try again"
+
   const $messageDisplay = $('#display');
 
   function checkForMatch () {
-
     if (cardsInPlay[0] === cardsInPlay[1]) {
-      console.log('you found a match');
+      $messageDisplay.append('Rock on, you lil scientist!');
+      $(`#card-${cardsInPlayIds[0]}`).css('visibility', 'hidden');
+      $(`#card-${cardsInPlayIds[1]}`).css('visibility', 'hidden');
     } else {
-      $messageDisplay.append('Try again');
+      $messageDisplay.append('Try again!');
     }
+    cardsInPlayIds = [];
   }
+
+  //winning/losing - if all cards have been matched before time runs out, display, you rock; time stops at that particular time and result is logged in the result div -
+
+
 
 
 
