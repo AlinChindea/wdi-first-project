@@ -2,11 +2,8 @@
 let mammalsAndSounds = []; //an emtpy array where matched images and sounds should be pushed
 
 let gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']; //the ids of the gameboard
-const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png', 'beluga-white-whale.png', 'leopard-seal.png', 'leopard-seal.png', 'killer-whale.png', 'killer-whale.png', 'narwhal.png', 'narwhal.png', 'common-dolphin.png', 'common-dolphin.png']; //the initial images to create a minimally running game
+const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png', 'beluga-white-whale.png', 'leopard-seal.png', 'leopard-seal.png', 'killer-whale.png', 'killer-whale.png', 'narwhal.png', 'narwhal.png', 'common-dolphin.png', 'common-dolphin.png']; //the initial images to create a minimally running game; ideally, this would be empty and the game would randomly take 6 cards from teh images folder
 
-// const $messageDisplay = $('#display');
-// const $resetButton = $('#reset');
-// const $modeButtons = $('.mode');
 
 //function creating random ids in the mammalsAndSounds array
 function createPairs() {
@@ -21,11 +18,26 @@ function createPairs() {
 }
 
 $(() => {
-  // while ($squares.length > 0) {
-  //   $squares[0] = mammalsAndSounds[i];
-  //   mammalsAndSounds.splice(i, 1);
-  //   $squares=[].slice.call(mammalsAndSounds, 1);
-  // }
+
+//on window load, cards are facedown and cards can't be clicked
+  const initialBoard = function () {
+    for (let i = 1; i <= mammals.length; i++) {
+      const $card = $(`#card-${i}`);
+      // console.log($card);
+      $card.css('background-image', 'images/finback-whale.png');
+    }
+  };
+  initialBoard();
+
+
+
+  //if cards flipped are a pair, remove these from the grid; else turn them back and display "try again"
+
+  //winning/losing - if all cards have been matched before time runs out, display, you rock; time stops at that particular time and result is logged in the result div -
+
+
+
+
 
   //must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
   const $squares = $('.square');
@@ -33,13 +45,13 @@ $(() => {
     createPairs();
     mammalsAndSounds.forEach((thingInArray, i)=> {
       // using jQuery, grab the square with the current squareId
-      const $curentSquare = $(`#${thingInArray}`);
+      const $curentSquare = $(`#card-${thingInArray}`);
       const currentMammal = mammals[i];
       $curentSquare.css('background-image', `url(images/${currentMammal}`);
       // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
     });
   }
-  matchImagesToSquares();
+  // matchImagesToSquares();
 
   //TIMER
   const $startTime = $('#reset');
@@ -65,12 +77,43 @@ $(() => {
       timerIsRunning = true;
     }
   }
+
+  //clicking new game starts the game: timer starts running and cards can be flipped
   function startTimer() {
     const twoMinutes = 120;
     const $timerScreen = $('#time');
-    startStopTimer(twoMinutes, $timerScreen);
+    $squares.on('click', flipCard);
+    startStopTimer(5, $timerScreen);
   }
   $startTime.on('click', startTimer);
+
+  let cardsInPlay = [];
+
+  function flipCard (e) {
+    const cardIdAttribute = $(e.target).attr('id');;
+    const cardId = parseInt(cardIdAttribute.substr(5,2))
+    cardsInPlay.push(mammals[cardId]);
+    console.log(cardsInPlay)
+    $(e.target).css('background-image', `url(images/${mammals[cardId]})`);
+    if (cardsInPlay.length === 2) {
+    // If so, call the checkForMatch function
+      checkForMatch();
+      // Empty cards in play array for next try
+      cardsInPlay = [];
+    }
+  }
+
+  const $messageDisplay = $('#display');
+
+  function checkForMatch () {
+
+    if (cardsInPlay[0] === cardsInPlay[1]) {
+      console.log('you found a match');
+    } else {
+      $messageDisplay.append('Try again');
+    }
+  }
+
 
 
 
