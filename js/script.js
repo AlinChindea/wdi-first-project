@@ -1,13 +1,14 @@
 // let numSquares = 12;
-let mammalsAndSounds = [];
-let gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-const mammals = ['bearded-seal.png', 'beluga-white-whale.png', 'leopard-seal.png', 'killer-whale.png', 'narwhal.png', 'common-dolphin.png'];
+let mammalsAndSounds = []; //an emtpy array where matched images and sounds should be pushed
+
+let gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']; //the ids of the gameboard
+const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png', 'beluga-white-whale.png', 'leopard-seal.png', 'leopard-seal.png', 'killer-whale.png', 'killer-whale.png', 'narwhal.png', 'narwhal.png', 'common-dolphin.png', 'common-dolphin.png']; //the initial images to create a minimally running game
 
 // const $messageDisplay = $('#display');
 // const $resetButton = $('#reset');
 // const $modeButtons = $('.mode');
 
-
+//function creating random ids in the mammalsAndSounds array
 function createPairs() {
   mammalsAndSounds = [];
   while (gameBoard.length > 0) {
@@ -20,24 +21,25 @@ function createPairs() {
 }
 
 $(() => {
-
   // while ($squares.length > 0) {
   //   $squares[0] = mammalsAndSounds[i];
   //   mammalsAndSounds.splice(i, 1);
   //   $squares=[].slice.call(mammalsAndSounds, 1);
   // }
 
+  //must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
   const $squares = $('.square');
   function matchImagesToSquares() {
-    mammalsAndSounds.forEach((squareId, index)=> {
-      $squares.each((i, square) => {
-        const $square = $(square);
-        if($square.attr('id') === squareId) {
-          $square.css('background-image', `url(../images/${mammals[0]})`);
-        }
-      });
+    createPairs();
+    mammalsAndSounds.forEach((thingInArray, i)=> {
+      // using jQuery, grab the square with the current squareId
+      const $curentSquare = $(`#${thingInArray}`);
+      const currentMammal = mammals[i];
+      $curentSquare.css('background-image', `url(images/${currentMammal}`);
+      // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
     });
   }
+  matchImagesToSquares();
 
   //TIMER
   const $startTime = $('#reset');
