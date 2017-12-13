@@ -19,6 +19,16 @@ function createPairs() {
 
 $(() => {
   const $timerScreen = $('#time');
+  const $squares = $('.square');
+  const $audio = $('#audio').get(0);
+  const $startTime = $('#reset');
+  let timerIsRunning = false;
+  let timerId = null;
+  let cardsInPlay = [];
+  let cardsInPlayIds = [];
+  const $messageDisplay = $('#display');
+  let matchScore = 0;
+  const $restartGame = $('#restart');
 
   //on window load,x cards are facedown and cards can't be clicked
   function initialBoard () {
@@ -28,10 +38,8 @@ $(() => {
       $card.css('background-image', 'url("images/finback-whale.png")');
     }
   }
-  // initialBoard();
-
   //must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
-  const $squares = $('.square');
+
   function matchImagesToSquares() {
     createPairs();
     mammalsAndSounds.forEach((thingInArray, i)=> {
@@ -44,9 +52,6 @@ $(() => {
   }
 
   //TIMER
-  const $startTime = $('#reset');
-  let timerIsRunning = false;
-  let timerId = null;
 
   function startStopTimer(duration, $display) {
     let timer = duration;
@@ -70,6 +75,7 @@ $(() => {
   //clicking new game starts the game: timer starts running and cards can be flipped
   function startTimer() {
     $squares.on('click', flipCard);
+    $squares.on('click', playSound);
     startStopTimer(oneMinute, $timerScreen);
     const $howToPlay = $('.instructions');
     $howToPlay.removeClass('pulse');
@@ -78,8 +84,6 @@ $(() => {
 
 
   //flipping a card
-  let cardsInPlay = [];
-  let cardsInPlayIds = [];
 
   function flipCard (e) {
     const cardIdAttribute = $(e.target).attr('id');
@@ -98,11 +102,16 @@ $(() => {
     }
   }
 
+  //play the audio sounds
+  // $squares.on('click', playSound);
+
+  function playSound(e) {
+    const filename = $(e.target).attr('id');
+    $audio.src = `sounds/${filename}.wav`;
+    $audio.play();
+  }
+
   //if cards flipped are a pair, remove these from the grid; else turn them back and display "try again"
-
-  const $messageDisplay = $('#display');
-  let matchScore = 0;
-
 
   function checkForMatch () {
     if (cardsInPlay[0].backgroundImage === cardsInPlay[1].backgroundImage && cardsInPlay[0].cardId !== cardsInPlay[1].cardId) {
@@ -136,7 +145,7 @@ $(() => {
     }
   }
 
-  const $restartGame = $('#restart');
+
   function reset () {
     mammalsAndSounds = [];
     initialBoard();
@@ -148,7 +157,7 @@ $(() => {
     for (let i=0; i < $squares.length; i++) {
       $($squares[i]).css('visibility', 'visible');
     }
-    $('#restart').css('display', 'none');
+    $('#restart').css('display', 'none'); //hides the play again button
 
   }
   $restartGame.on('click', reset);

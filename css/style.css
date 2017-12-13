@@ -112,7 +112,7 @@ button:hover {
 main {
   padding: 30px 20px 0;
   margin-right: 0;
-  /* background-image: url("../images/main-background.jpeg");
+  /* background-image: url("https://goo.gl/Udu4L3");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
@@ -161,18 +161,18 @@ main {
   margin: 0 auto;
   color: white;
   font-weight: 400;
-  background-color: mediumseagreen;
+  background-color: #ff6f69;
   margin-bottom: 20px;
 }
 
-.score, .topresult {
+.score {
   border-radius: 15px;
   font-family: 'Mukta Vaani', sans-serif;
   text-align: center;
   padding: 10px;
   color: white;
   font-weight: 400;
-  background-color: mediumseagreen;
+  background-color: #ff6f69;
   margin-top: 10px;
 }
 

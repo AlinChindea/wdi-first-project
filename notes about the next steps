@@ -6,7 +6,7 @@ Create score algorithm = number of moves + time)?
 //   console.log($moveCount);
 // });
 
-reset function => board is loading but cards are randomly displayed face up. because of the bug below, you can click those out the gamewon doesn't work
+reset function => board is loading but cards are randomly displayed face up.  the gamewon function doesn't work
 
 
 bug - on replay, time doesn't stop when all images are matched and winning message is not displayed
