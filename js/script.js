@@ -91,24 +91,36 @@ $(() => {
     $(e.target).css('background-image', `url(images/${mammals[cardId]})`);
     if (cardsInPlay.length === 2) {
     // If so, call the checkForMatch function
-      checkForMatch();
-      // Empty cards in play array for next try
-      cardsInPlay = [];
+      setTimeout(() => {
+        checkForMatch();
+        // Empty cards in play array for next try
+        cardsInPlay = [];
+      }, 1000);
     }
   }
 
 
   //if cards flipped are a pair, remove these from the grid; else turn them back and display "try again"
 
-  const $messageDisplay = $('#display');
+  let $messageDisplay = $('#display');
+
 
   function checkForMatch () {
     if (cardsInPlay[0] === cardsInPlay[1]) {
-      $messageDisplay.append('Rock on, you lil scientist!');
+      $messageDisplay.text('Rock on!');//settimeout, duration then set it to an empty string
+      setTimeout( ()=> {
+        $messageDisplay.text('');
+      }, 1000);
       $(`#card-${cardsInPlayIds[0]}`).css('visibility', 'hidden');
       $(`#card-${cardsInPlayIds[1]}`).css('visibility', 'hidden');
     } else {
-      $messageDisplay.append('Try again!');
+      $(`#card-${cardsInPlayIds[0]}`).css('backgroundImage', 'url("images/finback-whale.png")');
+      $(`#card-${cardsInPlayIds[1]}`).css('backgroundImage', 'url("images/finback-whale.png")');
+      console.log($(`#card-${cardsInPlayIds[0]}`));
+      $messageDisplay.text('Try again!');
+      setTimeout( ()=> {
+        $messageDisplay.text('');
+      }, 1000);
     }
     cardsInPlayIds = [];
   }
