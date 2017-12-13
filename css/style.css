@@ -151,7 +151,7 @@ main {
   margin-bottom: 20px;
 }
 
-.score {
+.score, .topresult {
   border-radius: 15px;
   font-family: 'Mukta Vaani', sans-serif;
   text-align: center;

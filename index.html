@@ -2,12 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>My First Website Online</title>
+  <title>First Game</title>
   <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Chelsea+Market|Mukta+Vaani" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="./js/script.js"></script>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/animate.css">
 </head>
 <body>
   <audio id="audio">
@@ -19,9 +20,9 @@
       <nav id="stripe">
         <button id="reset">New Game</button>
         <div class="hoverdown">
-          <button class="instructions">How to play</button>
+          <button class="instructions animated infinite pulse">How to play</button>
           <div class="hoverdown-content">
-            <p>This is a simple memory card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards before the time runs out.</p>
+            <p>This is a simple memory card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards before the time runs out. Click on New Game to start. Good luck!</p>
           </div>
         </div>
         <span id="display"></span>
@@ -50,12 +51,20 @@
 
       <div class ="timescore">
         <div id="timer">
-          <button id="reset"></button>
+          <!-- <button id="reset"></button> -->
           <button id="startStop"></button>
           <div class="screen">Time left: <span id='time'>01:00</span> minute!</div>
         </div>
         <div class="score">
           Your result: <span id='finalScore'><span>
+        </div>
+        <div class="topresult">
+          Your top results:
+          <ol>
+            <li><span id="second">Jacques Cousteau</li>
+            <li><span id="second">Rachel Carson</li>
+            <li><span id="third">George Constanza</li>
+          </ol>
         </div>
       </div>
     </main>

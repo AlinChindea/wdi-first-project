@@ -23,7 +23,6 @@ $(() => {
       const $card = $(`#card-${i}`);
       // console.log($card);
       $card.css('background-image', 'images/finback-whale.png');
-      // $('.instructions').animate({zoom: '110%'}, 400, 'swing');
     }
   };
   initialBoard();
@@ -72,6 +71,8 @@ $(() => {
     const $timerScreen = $('#time');
     $squares.on('click', flipCard);
     startStopTimer(oneMinute, $timerScreen);
+    const $howToPlay = $('.instructions');
+    $howToPlay.removeClass('pulse');
   }
   $startTime.on('click', startTimer);
 
@@ -106,14 +107,13 @@ $(() => {
 
   function checkForMatch () {
     if (cardsInPlay[0] === cardsInPlay[1]) {
-      $messageDisplay.text('Rock on!');
+      $messageDisplay.text('Science on!');
       setTimeout( ()=> {
         $messageDisplay.text('');
       }, 1000);
       $(`#card-${cardsInPlayIds[0]}`).css('visibility', 'hidden');
       $(`#card-${cardsInPlayIds[1]}`).css('visibility', 'hidden');
       matchScore += 1;
-      console.log(matchScore);
       gameWon();
     } else {
       $(`#card-${cardsInPlayIds[0]}`).css('backgroundImage', 'url("images/finback-whale.png")');
@@ -130,6 +130,7 @@ $(() => {
     if (matchScore === 6) {
       const $resultScreen = $('#finalScore');
       $resultScreen.text('You won, lil Jack Cousteau!');
+      $startTime.text('Play again?');
     } else {
       flipCard;
     }
@@ -138,11 +139,6 @@ $(() => {
 
 
 
-  // function flip() {
-  //
-  // }
-
-  //winning/losing - if all cards have been matched before time runs out, display, you rock; time stops at that particular time and result is logged in the result div -
 
 
 
