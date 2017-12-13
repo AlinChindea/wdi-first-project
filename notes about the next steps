@@ -1,4 +1,7 @@
 
-//if all cards disappeared && time > 0, display "you won" (score later - = number of moves + time)
-New game => play again? the reset function
-//reset function => whole board is reshuffled and cards are distributed again
+Create score algorithm = number of moves + time)?
+
+reset function => board is loading but cards are randomly displayed face up. because of the bug below, you can click those out the gamewon doesn't work
+
+
+fix bug - clicking a photo twice, makes it disappear, leaving its pair still on the game board

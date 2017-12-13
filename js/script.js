@@ -1,7 +1,8 @@
 let mammalsAndSounds = []; //an emtpy array where matched images and sounds should be pushed
 
 let gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']; //the ids of the gameboard
-const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png', 'beluga-white-whale.png', 'leopard-seal.png', 'leopard-seal.png', 'killer-whale.png', 'killer-whale.png', 'narwhal.png', 'narwhal.png', 'common-dolphin.png', 'common-dolphin.png']; //the initial images to create a minimally running game; ideally, this would be empty and the game would randomly take 6 cards from teh images folder
+const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png', 'beluga-white-whale.png', 'leopard-seal.png', 'leopard-seal.png', 'killer-whale.png', 'killer-whale.png', 'narwhal.png', 'narwhal.png', 'common-dolphin.png', 'common-dolphin.png']; //the initial images to create a minimally running game; ideally, this would be empty and the game would randomly take 6 cards from the images folder
+
 let oneMinute = 60;
 
 //function creating random ids in the mammalsAndSounds array
@@ -37,11 +38,10 @@ $(() => {
       // using jQuery, grab the square with the current squareId
       const $curentSquare = $(`#card-${thingInArray}`);
       const currentMammal = mammals[i];
-      // $curentSquare.css('background-image', `url(images/${currentMammal}`);
+      $curentSquare.css('background-image', `url(images/${currentMammal}`);
       // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
     });
   }
-  // matchImagesToSquares();
 
   //TIMER
   const $startTime = $('#reset');
@@ -86,8 +86,7 @@ $(() => {
     let cardId = parseInt(cardIdAttribute.substr(5,2));
     cardsInPlayIds.push(cardId);
     cardId = --cardId;
-    cardsInPlay.push(mammals[cardId]);
-    // console.log(cardsInPlay);
+    cardsInPlay.push({backgroundImage: mammals[cardId], cardId: cardIdAttribute});
     $(e.target).css('background-image', `url(images/${mammals[cardId]})`);
     if (cardsInPlay.length === 2) {
       // If so, call the checkForMatch function
@@ -106,7 +105,8 @@ $(() => {
 
 
   function checkForMatch () {
-    if (cardsInPlay[0] === cardsInPlay[1]) {
+    console.log(cardsInPlay);
+    if (cardsInPlay[0].backgroundImage === cardsInPlay[1].backgroundImage && cardsInPlay[0].cardId !== cardsInPlay[1].cardId) {
       $messageDisplay.text('Science on!');
       setTimeout( ()=> {
         $messageDisplay.text('');
@@ -130,7 +130,6 @@ $(() => {
     if (matchScore === 6) {
       const $resultScreen = $('#finalScore');
       $resultScreen.text('You are a true ocean scientist!');
-      // $startTime.text('Play again?');
       clearInterval(timerId);
       $('#restart').css('display', 'block');
     } else {
@@ -142,7 +141,6 @@ $(() => {
   function reset () {
     mammalsAndSounds = [];
     initialBoard();
-    createPairs();
     matchImagesToSquares();
     oneMinute = 60;
     timerIsRunning = false;
@@ -151,6 +149,7 @@ $(() => {
     for (let i=0; i < $squares.length; i++) {
       $($squares[i]).css('visibility', 'visible');
     }
+    $('#restart').css('display', 'none');
   }
   $restartGame.on('click', reset);
 
@@ -162,6 +161,12 @@ $(() => {
   //       $($modeButtons[0]).removeClass('selected');
   //       $($modeButtons[1]).removeClass('selected');
   //       this.classList.add('selected');
+  //       if $($modeButtons[0]).on('click', () => {
+  //         oneMinute = 60;
+  //         timerIsRunning = false;
+  //         $timerScreen.text('01:00');
+  //       })
+  // if else? if hard clicked, 30 seconds, else status quo?
   //     });
   //   }
   // }
