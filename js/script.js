@@ -2,7 +2,7 @@ let mammalsAndSounds = []; //an emtpy array where matched images and sounds shou
 
 let gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']; //the ids of the gameboard
 const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png', 'beluga-white-whale.png', 'leopard-seal.png', 'leopard-seal.png', 'killer-whale.png', 'killer-whale.png', 'narwhal.png', 'narwhal.png', 'common-dolphin.png', 'common-dolphin.png']; //the initial images to create a minimally running game; ideally, this would be empty and the game would randomly take 6 cards from teh images folder
-
+let oneMinute = 60;
 
 //function creating random ids in the mammalsAndSounds array
 function createPairs() {
@@ -15,17 +15,19 @@ function createPairs() {
   gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 }
 
-$(() => {
 
-//on window load,x cards are facedown and cards can't be clicked
+$(() => {
+  const $timerScreen = $('#time');
+
+  //on window load,x cards are facedown and cards can't be clicked
   function initialBoard () {
     for (let i = 1; i <= mammals.length; i++) {
       const $card = $(`#card-${i}`);
       // console.log($card);
-      $card.css('background-image', 'images/finback-whale.png');
+      $card.css('background-image', 'url("images/finback-whale.png")');
     }
   }
-  initialBoard();
+  // initialBoard();
 
   //must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
   const $squares = $('.square');
@@ -35,7 +37,7 @@ $(() => {
       // using jQuery, grab the square with the current squareId
       const $curentSquare = $(`#card-${thingInArray}`);
       const currentMammal = mammals[i];
-      $curentSquare.css('background-image', `url(images/${currentMammal}`);
+      // $curentSquare.css('background-image', `url(images/${currentMammal}`);
       // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
     });
   }
@@ -67,8 +69,6 @@ $(() => {
   }
   //clicking new game starts the game: timer starts running and cards can be flipped
   function startTimer() {
-    const oneMinute = 60;
-    const $timerScreen = $('#time');
     $squares.on('click', flipCard);
     startStopTimer(oneMinute, $timerScreen);
     const $howToPlay = $('.instructions');
@@ -90,7 +90,7 @@ $(() => {
     // console.log(cardsInPlay);
     $(e.target).css('background-image', `url(images/${mammals[cardId]})`);
     if (cardsInPlay.length === 2) {
-    // If so, call the checkForMatch function
+      // If so, call the checkForMatch function
       setTimeout(() => {
         checkForMatch();
         // Empty cards in play array for next try
@@ -140,26 +140,32 @@ $(() => {
 
   const $restartGame = $('#restart');
   function reset () {
-    for (let i=0; i < $squares.length ; i++) {
-      initialBoard();
+    mammalsAndSounds = [];
+    initialBoard();
+    createPairs();
+    matchImagesToSquares();
+    oneMinute = 60;
+    timerIsRunning = false;
+    $timerScreen.text('01:00');
+    startStopTimer(oneMinute, $timerScreen);
+    for (let i=0; i < $squares.length; i++) {
       $($squares[i]).css('visibility', 'visible');
     }
-
   }
-
   $restartGame.on('click', reset);
 
-  const $modeButtons = $('.mode');
-  function setupModeButtons(){
-    for(var i = 0; i < $modeButtons.length; i++){
-      $($modeButtons[i]).on('click', function(){
-        $($modeButtons[0]).removeClass('selected');
-        $($modeButtons[1]).removeClass('selected');
-        this.classList.add('selected');
-      });
-    }
-  }
-  setupModeButtons();
+  // toggles between easy and hard mode but those are not yet linked to anything and the reset function should be called inside but it doesn't work
+  // const $modeButtons = $('.mode');
+  // function setupModeButtons(){
+  //   for(var i = 0; i < $modeButtons.length; i++){
+  //     $($modeButtons[i]).on('click', function(){
+  //       $($modeButtons[0]).removeClass('selected');
+  //       $($modeButtons[1]).removeClass('selected');
+  //       this.classList.add('selected');
+  //     });
+  //   }
+  // }
+  // setupModeButtons();
 
 
 
