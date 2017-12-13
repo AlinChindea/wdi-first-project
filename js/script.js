@@ -105,7 +105,6 @@ $(() => {
 
 
   function checkForMatch () {
-    console.log(cardsInPlay);
     if (cardsInPlay[0].backgroundImage === cardsInPlay[1].backgroundImage && cardsInPlay[0].cardId !== cardsInPlay[1].cardId) {
       $messageDisplay.text('Science on!');
       setTimeout( ()=> {
@@ -141,7 +140,7 @@ $(() => {
   function reset () {
     mammalsAndSounds = [];
     initialBoard();
-    matchImagesToSquares();
+    // matchImagesToSquares();
     oneMinute = 60;
     timerIsRunning = false;
     $timerScreen.text('01:00');
@@ -150,27 +149,42 @@ $(() => {
       $($squares[i]).css('visibility', 'visible');
     }
     $('#restart').css('display', 'none');
+
   }
   $restartGame.on('click', reset);
 
   // toggles between easy and hard mode but those are not yet linked to anything and the reset function should be called inside but it doesn't work
   // const $modeButtons = $('.mode');
+  // const $modeEasy = $('#easy');
+  // const $modeHard = $('#hard');
+  //
   // function setupModeButtons(){
   //   for(var i = 0; i < $modeButtons.length; i++){
   //     $($modeButtons[i]).on('click', function(){
-  //       $($modeButtons[0]).removeClass('selected');
-  //       $($modeButtons[1]).removeClass('selected');
+  //       $modeEasy.removeClass('selected');
+  //       $modeHard.removeClass('selected');
   //       this.classList.add('selected');
-  //       if $($modeButtons[0]).on('click', () => {
-  //         oneMinute = 60;
-  //         timerIsRunning = false;
-  //         $timerScreen.text('01:00');
-  //       })
-  // if else? if hard clicked, 30 seconds, else status quo?
   //     });
   //   }
   // }
   // setupModeButtons();
+  //
+  // function level() {
+  //   if ($modeEasy.data('clicked')) {
+  //     oneMinute = 30;
+  //     timerIsRunning = false;
+  //     $timerScreen.text('00:30');
+  //     startStopTimer(oneMinute, $timerScreen);
+  //   } else {
+  //     oneMinute = 60;
+  //     timerIsRunning = false;
+  //     $timerScreen.text('00:60');
+  //     startStopTimer(oneMinute, $timerScreen);
+  //   }
+  // }
+
+
+
 
 
 
