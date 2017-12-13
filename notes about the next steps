@@ -4,9 +4,47 @@ Create score algorithm = number of moves + time)?
 // $squares.on('click', () => {
 //   $moveCount += 1;
 //   console.log($moveCount);
+if moveCount = 12, display: you're Jacques Cousteau of memory games;
+else if moveCount > 12, display
+
 // });
 
 reset function => board is loading but cards are randomly displayed face up.  the gamewon function doesn't work
 
 
 bug - on replay, time doesn't stop when all images are matched and winning message is not displayed
+
+if shuffle works, check that audio matches the flipped card
+
+
+the two level setup
+
+// toggles between easy and hard mode but those are not yet linked to anything and the reset function should be called inside but it doesn't work
+// const $modeButtons = $('.mode');
+// const $modeEasy = $('#easy');
+// const $modeHard = $('#hard');
+//
+// function setupModeButtons(){
+//   for(var i = 0; i < $modeButtons.length; i++){
+//     $($modeButtons[i]).on('click', function(){
+//       $modeEasy.removeClass('selected');
+//       $modeHard.removeClass('selected');
+//       this.classList.add('selected');
+//     });
+//   }
+// }
+// setupModeButtons();
+//
+// function level() {
+//   if ($modeEasy.data('clicked')) {
+//     oneMinute = 30;
+//     timerIsRunning = false;
+//     $timerScreen.text('00:30');
+//     startStopTimer(oneMinute, $timerScreen);
+//   } else {
+//     oneMinute = 60;
+//     timerIsRunning = false;
+//     $timerScreen.text('00:60');
+//     startStopTimer(oneMinute, $timerScreen);
+//   }
+// }

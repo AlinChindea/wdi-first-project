@@ -175,7 +175,3 @@ main {
   background-color: #ff6f69;
   margin-top: 10px;
 }
-
-.grid:hover .square .grid.hover .square .grid.flip .square {
-  transform: rotateY(180deg);
-}

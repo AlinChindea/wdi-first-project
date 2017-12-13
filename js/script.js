@@ -29,6 +29,7 @@ $(() => {
   const $messageDisplay = $('#display');
   let matchScore = 0;
   const $restartGame = $('#restart');
+  const $howToPlay = $('.instructions');
 
   //on window load,x cards are facedown and cards can't be clicked
   function initialBoard () {
@@ -77,7 +78,6 @@ $(() => {
     $squares.on('click', flipCard);
     $squares.on('click', playSound);
     startStopTimer(oneMinute, $timerScreen);
-    const $howToPlay = $('.instructions');
     $howToPlay.removeClass('pulse');
   }
   $startTime.on('click', startTimer);
@@ -162,36 +162,7 @@ $(() => {
   }
   $restartGame.on('click', reset);
 
-  // toggles between easy and hard mode but those are not yet linked to anything and the reset function should be called inside but it doesn't work
-  // const $modeButtons = $('.mode');
-  // const $modeEasy = $('#easy');
-  // const $modeHard = $('#hard');
-  //
-  // function setupModeButtons(){
-  //   for(var i = 0; i < $modeButtons.length; i++){
-  //     $($modeButtons[i]).on('click', function(){
-  //       $modeEasy.removeClass('selected');
-  //       $modeHard.removeClass('selected');
-  //       this.classList.add('selected');
-  //     });
-  //   }
-  // }
-  // setupModeButtons();
-  //
-  // function level() {
-  //   if ($modeEasy.data('clicked')) {
-  //     oneMinute = 30;
-  //     timerIsRunning = false;
-  //     $timerScreen.text('00:30');
-  //     startStopTimer(oneMinute, $timerScreen);
-  //   } else {
-  //     oneMinute = 60;
-  //     timerIsRunning = false;
-  //     $timerScreen.text('00:60');
-  //     startStopTimer(oneMinute, $timerScreen);
-  //   }
-  // }
-
+  
 
 
 
