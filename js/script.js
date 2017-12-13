@@ -95,7 +95,7 @@ $(() => {
         checkForMatch();
         // Empty cards in play array for next try
         cardsInPlay = [];
-      }, 1000);
+      }, 800);
     }
   }
 
@@ -110,7 +110,7 @@ $(() => {
       $messageDisplay.text('Science on!');
       setTimeout( ()=> {
         $messageDisplay.text('');
-      }, 1000);
+      }, 800);
       $(`#card-${cardsInPlayIds[0]}`).css('visibility', 'hidden');
       $(`#card-${cardsInPlayIds[1]}`).css('visibility', 'hidden');
       matchScore += 1;
@@ -121,7 +121,7 @@ $(() => {
       $messageDisplay.text('Try again!');
       setTimeout( ()=> {
         $messageDisplay.text('');
-      }, 1000);
+      }, 800);
     }
     cardsInPlayIds = [];
   }
@@ -129,12 +129,27 @@ $(() => {
   function gameWon () {
     if (matchScore === 6) {
       const $resultScreen = $('#finalScore');
-      $resultScreen.text('You won, lil Jack Cousteau!');
-      $startTime.text('Play again?');
+      $resultScreen.text('You are a true ocean scientist!');
+      // $startTime.text('Play again?');
+      clearInterval(timerId);
+      $('#restart').css('display', 'block');
     } else {
       flipCard;
     }
   }
+
+  const $restartGame = $('#restart');
+  function reset() {
+    // mammalsAndSounds = [];
+
+    for (let i=0; i < $squares.length ; i++) {
+      initialBoard();
+      $($squares[i]).css('visibility', 'visible');
+    }
+
+  }
+
+  $restartGame.on('click', reset);
 
 
 

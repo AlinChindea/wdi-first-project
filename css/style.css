@@ -35,6 +35,12 @@ h1 {
 #display {
   display: inline-block;
   width: 20%;
+  font-family: 'Bungee Inline', cursive,;
+  font-weight: 700;
+  color: 	#ff6f69;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: inherit;
 }
 
 #stripe {
@@ -66,6 +72,10 @@ button {
   /*-webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;*/
   outline: none;
+}
+
+#restart {
+  display: none;
 }
 
 button:hover {
@@ -102,6 +112,10 @@ button:hover {
 main {
   padding: 30px 20px 0;
   margin-right: 0;
+  /* background-image: url("../images/main-background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
   display: flex;
   justify-content: center;
   background-color: #99ccff;
