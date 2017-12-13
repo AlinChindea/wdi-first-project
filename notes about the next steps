@@ -1,3 +1,4 @@
-//flip back card if no match - css animations cardflip
-//if all cards disappeared && time > 0, display "you won" (score later - = number of moves + time) New game => play again? the reset function
+
+//if all cards disappeared && time > 0, display "you won" (score later - = number of moves + time)
+New game => play again? the reset function
 //reset function => whole board is reshuffled and cards are distributed again

@@ -58,7 +58,7 @@ $(() => {
         minutes = minutes < 10 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
         $display.text(minutes + ':' + seconds);
-        if(timer  === 0) {
+        if(timer === 0) {
           clearInterval(timerId);
           // $timer.addClass('ringing');
         }
@@ -66,7 +66,6 @@ $(() => {
       timerIsRunning = true;
     }
   }
-
   //clicking new game starts the game: timer starts running and cards can be flipped
   function startTimer() {
     const oneMinute = 60;
@@ -99,24 +98,26 @@ $(() => {
     }
   }
 
-
   //if cards flipped are a pair, remove these from the grid; else turn them back and display "try again"
 
-  let $messageDisplay = $('#display');
+  const $messageDisplay = $('#display');
+  let matchScore = 0;
 
 
   function checkForMatch () {
     if (cardsInPlay[0] === cardsInPlay[1]) {
-      $messageDisplay.text('Rock on!');//settimeout, duration then set it to an empty string
+      $messageDisplay.text('Rock on!');
       setTimeout( ()=> {
         $messageDisplay.text('');
       }, 1000);
       $(`#card-${cardsInPlayIds[0]}`).css('visibility', 'hidden');
       $(`#card-${cardsInPlayIds[1]}`).css('visibility', 'hidden');
+      matchScore += 1;
+      console.log(matchScore);
+      gameWon();
     } else {
       $(`#card-${cardsInPlayIds[0]}`).css('backgroundImage', 'url("images/finback-whale.png")');
       $(`#card-${cardsInPlayIds[1]}`).css('backgroundImage', 'url("images/finback-whale.png")');
-      console.log($(`#card-${cardsInPlayIds[0]}`));
       $messageDisplay.text('Try again!');
       setTimeout( ()=> {
         $messageDisplay.text('');
@@ -124,6 +125,18 @@ $(() => {
     }
     cardsInPlayIds = [];
   }
+
+  function gameWon () {
+    if (matchScore === 6) {
+      const $resultScreen = $('#finalScore');
+      $resultScreen.text('You won, lil Jack Cousteau!');
+    } else {
+      flipCard;
+    }
+  }
+
+
+
 
   // function flip() {
   //
