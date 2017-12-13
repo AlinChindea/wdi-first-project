@@ -18,13 +18,13 @@ function createPairs() {
 $(() => {
 
 //on window load,x cards are facedown and cards can't be clicked
-  const initialBoard = function () {
+  function initialBoard () {
     for (let i = 1; i <= mammals.length; i++) {
       const $card = $(`#card-${i}`);
       // console.log($card);
       $card.css('background-image', 'images/finback-whale.png');
     }
-  };
+  }
   initialBoard();
 
   //must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
@@ -139,9 +139,7 @@ $(() => {
   }
 
   const $restartGame = $('#restart');
-  function reset() {
-    // mammalsAndSounds = [];
-
+  function reset () {
     for (let i=0; i < $squares.length ; i++) {
       initialBoard();
       $($squares[i]).css('visibility', 'visible');
@@ -151,7 +149,17 @@ $(() => {
 
   $restartGame.on('click', reset);
 
-
+  const $modeButtons = $('.mode');
+  function setupModeButtons(){
+    for(var i = 0; i < $modeButtons.length; i++){
+      $($modeButtons[i]).on('click', function(){
+        $($modeButtons[0]).removeClass('selected');
+        $($modeButtons[1]).removeClass('selected');
+        this.classList.add('selected');
+      });
+    }
+  }
+  setupModeButtons();
 
 
 
