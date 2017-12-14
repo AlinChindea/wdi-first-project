@@ -5,16 +5,16 @@ const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png
 
 let gameTime = 60;
 
-//function creating random ids in the mammalsAndSounds array - needed to randomize cards and reshuffle
-// function createPairs() {
-//   mammalsAndSounds = [];
-//   while (gameBoard.length > 0) {
-//     const randomNumber = Math.floor(Math.random() * gameBoard.length);
-//     const randomCard = gameBoard.splice(randomNumber, 1)[0];
-//     mammalsAndSounds.push(randomCard);
-//   }
-//   gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-// }
+// function creating random ids in the mammalsAndSounds array - needed to randomize cards and reshuffle
+function createPairs() {
+  mammalsAndSounds = [];
+  while (gameBoard.length > 0) {
+    const randomNumber = Math.floor(Math.random() * gameBoard.length);
+    const randomCard = gameBoard.splice(randomNumber, 1)[0];
+    mammalsAndSounds.push(randomCard);
+  }
+  gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+}
 
 
 $(() => {
@@ -22,6 +22,7 @@ $(() => {
   const $modeEasy = $('#easy');
   const $modeHard = $('#hard');
   const $modeExtreme = $('#extreme');
+  let gameMode = 'Easy';
   const $timerScreen = $('#time');
   const $squares = $('.square');
   const $audio = $('#audio').get(0);
@@ -37,7 +38,7 @@ $(() => {
   const $resultScreen = $('#finalScore');
   let timer = 0;
   const $scoreBoard = $('.score');
-  let gameMode = null;
+
 
   //on window load,x cards are facedown and cards can't be clicked
   function initialBoard () {
@@ -48,7 +49,7 @@ $(() => {
     }
   }
 
-  //difficulty levels buttons are loaded
+  //difficulty levels buttons are loaded and defined
   function setupModeButtons(){
     for(var i = 0; i < $modeButtons.length; i++){
       $($modeButtons[i]).on('click', function(){
@@ -172,22 +173,21 @@ $(() => {
   }
 
   function checkResult () {
-    if (timer === 0 && matchScore < 6) {
+    if(timer === 0 || matchScore === 6){
       $scoreBoard.css('display', 'block');
+    }
+    if (timer === 0 && matchScore < 6) {
       $resultScreen.text('Time is up! You are the George Constanza of memory games!');
       $('#restart').css('display', 'block');
     } else if (matchScore === 6 && gameMode === 'Extreme') {
-      $scoreBoard.css('display', 'block');
       $resultScreen.text('You are Jacques Cousteau of memory games!');
       clearInterval(timerId);
       $('#restart').css('display', 'block');
     } else if (matchScore === 6 && gameMode === 'Hard') {
-      $scoreBoard.css('display', 'block');
       $resultScreen.text('You are a memory champion!');
       clearInterval(timerId);
       $('#restart').css('display', 'block');
     } else if (matchScore === 6 && gameMode === 'Easy') {
-      $scoreBoard.css('display', 'block');
       $resultScreen.text('You are a true ocean scientist!');
       clearInterval(timerId);
       $('#restart').css('display', 'block');

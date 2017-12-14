@@ -12,6 +12,7 @@ else if moveCount > 12, display
 
 if shuffle works, check that audio matches the flipped card
 
+      // $scoreBoard.css('backgroundImage', 'url("https://goo.gl/m4541N")');
 
 three level winning message
 function checkResult () {
