@@ -18,6 +18,9 @@ function createPairs() {
 
 
 $(() => {
+  const $modeButtons = $('.mode');
+  const $modeEasy = $('#easy');
+  const $modeHard = $('#hard');
   const $timerScreen = $('#time');
   const $squares = $('.square');
   const $audio = $('#audio').get(0);
@@ -34,6 +37,7 @@ $(() => {
   let timer = 0;
   const $scoreBoard = $('.score');
 
+
   //on window load,x cards are facedown and cards can't be clicked
   function initialBoard () {
     for (let i = 1; i <= mammals.length; i++) {
@@ -43,6 +47,16 @@ $(() => {
     }
   }
 
+  function setupModeButtons(){
+    for(var i = 0; i < $modeButtons.length; i++){
+      $($modeButtons[i]).on('click', function(){
+        $modeEasy.removeClass('selected');
+        $modeHard.removeClass('selected');
+        this.classList.add('selected');
+      });
+    }
+  }
+  setupModeButtons();
 
   //TIMER
 
@@ -67,6 +81,21 @@ $(() => {
     }
   }
   //clicking new game starts the game: timer starts running and cards can be flipped
+
+  // function level() {
+  // //   if ($modeEasy.data('clicked')) {
+  // //     oneMinute = 30;
+  // //     timerIsRunning = false;
+  // //     $timerScreen.text('00:30');
+  // //     startStopTimer(oneMinute, $timerScreen);
+  // //   } else {
+  // //     oneMinute = 60;
+  // //     timerIsRunning = false;
+  // //     $timerScreen.text('00:60');
+  // //     startStopTimer(oneMinute, $timerScreen);
+  // //   }
+  // // }
+
   function startTimer() {
     $squares.on('click', flipCard);
     $squares.on('click', playSound);
