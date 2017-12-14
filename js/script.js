@@ -21,6 +21,7 @@ $(() => {
   const $modeButtons = $('.mode');
   const $modeEasy = $('#easy');
   const $modeHard = $('#hard');
+  const $modeExtreme = $('#extreme');
   const $timerScreen = $('#time');
   const $squares = $('.square');
   const $audio = $('#audio').get(0);
@@ -50,13 +51,38 @@ $(() => {
   function setupModeButtons(){
     for(var i = 0; i < $modeButtons.length; i++){
       $($modeButtons[i]).on('click', function(){
-        $modeEasy.removeClass('selected');
         $modeHard.removeClass('selected');
+        $modeEasy.removeClass('selected');
         this.classList.add('selected');
       });
     }
   }
   setupModeButtons();
+
+  function modeHard () {
+    $modeHard.on('click', () => {
+      oneMinute = 30;
+      $timerScreen.text('00:30');
+    });
+  }
+  modeHard();
+
+  function modeEasy () {
+    $modeEasy.on('click', () => {
+      oneMinute = 60;
+      $timerScreen.text('01:00');
+    });
+  }
+  modeEasy();
+
+  function modeExtreme () {
+    $modeExtreme.on('click', () => {
+      oneMinute = 15;
+      $timerScreen.text('00:15');
+    });
+  }
+  modeExtreme();
+
 
   //TIMER
 
@@ -82,24 +108,10 @@ $(() => {
   }
   //clicking new game starts the game: timer starts running and cards can be flipped
 
-  // function level() {
-  // //   if ($modeEasy.data('clicked')) {
-  // //     oneMinute = 30;
-  // //     timerIsRunning = false;
-  // //     $timerScreen.text('00:30');
-  // //     startStopTimer(oneMinute, $timerScreen);
-  // //   } else {
-  // //     oneMinute = 60;
-  // //     timerIsRunning = false;
-  // //     $timerScreen.text('00:60');
-  // //     startStopTimer(oneMinute, $timerScreen);
-  // //   }
-  // // }
-
   function startTimer() {
     $squares.on('click', flipCard);
     $squares.on('click', playSound);
-    startStopTimer(5, $timerScreen);
+    startStopTimer(oneMinute, $timerScreen);
     $howToPlay.removeClass('pulse');
   }
   $startTime.on('click', startTimer);
