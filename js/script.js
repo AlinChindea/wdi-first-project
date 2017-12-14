@@ -3,7 +3,7 @@ let mammalsAndSounds = []; //an emtpy array where matched images and sounds shou
 let gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']; //the ids of the gameboard
 const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png', 'beluga-white-whale.png', 'leopard-seal.png', 'leopard-seal.png', 'killer-whale.png', 'killer-whale.png', 'narwhal.png', 'narwhal.png', 'common-dolphin.png', 'common-dolphin.png']; //the initial images to create a minimally running game; ideally, this would be empty and the game would randomly take 6 cards from the images folder
 
-let oneMinute = 60;
+let gameTime = 60;
 
 //function creating random ids in the mammalsAndSounds array
 function createPairs() {
@@ -61,7 +61,7 @@ $(() => {
 
   function modeHard () {
     $modeHard.on('click', () => {
-      oneMinute = 30;
+      gameTime = 30;
       $timerScreen.text('00:30');
     });
   }
@@ -69,7 +69,7 @@ $(() => {
 
   function modeEasy () {
     $modeEasy.on('click', () => {
-      oneMinute = 60;
+      gameTime = 60;
       $timerScreen.text('01:00');
     });
   }
@@ -77,7 +77,7 @@ $(() => {
 
   function modeExtreme () {
     $modeExtreme.on('click', () => {
-      oneMinute = 15;
+      gameTime = 15;
       $timerScreen.text('00:15');
     });
   }
@@ -111,7 +111,7 @@ $(() => {
   function startTimer() {
     $squares.on('click', flipCard);
     $squares.on('click', playSound);
-    startStopTimer(oneMinute, $timerScreen);
+    startStopTimer(gameTime, $timerScreen);
     $howToPlay.removeClass('pulse');
   }
   $startTime.on('click', startTimer);
@@ -172,7 +172,17 @@ $(() => {
       $scoreBoard.css('display', 'block');
       $resultScreen.text('Time is up! You are the George Constanza of memory games!');
       $('#restart').css('display', 'block');
-    } else if (matchScore === 6) {
+    } else if (matchScore === 6 && modeExtreme) {
+      $scoreBoard.css('display', 'block');
+      $resultScreen.text('You are Jacques Cousteau of memory games!');
+      clearInterval(timerId);
+      $('#restart').css('display', 'block');
+    } else if (matchScore === 6 && modeHard) {
+      $scoreBoard.css('display', 'block');
+      $resultScreen.text('You are a memory champion!');
+      clearInterval(timerId);
+      $('#restart').css('display', 'block');
+    } else if (matchScore === 6 && modeEasy) {
       $scoreBoard.css('display', 'block');
       $resultScreen.text('You are a true ocean scientist!');
       clearInterval(timerId);
@@ -198,10 +208,10 @@ $(() => {
     matchScore = 0;
     initialBoard();
     // matchImagesToSquares();
-    oneMinute = 60;
+    gameTime = 60;
     timerIsRunning = false;
     $timerScreen.text('01:00');
-    startStopTimer(oneMinute, $timerScreen);
+    startStopTimer(gameTime, $timerScreen);
     $scoreBoard.css('display', 'none');
     $resultScreen.text('');
     for (let i=0; i < $squares.length; i++) {
