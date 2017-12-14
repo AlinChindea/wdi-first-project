@@ -32,6 +32,7 @@ $(() => {
   const $howToPlay = $('.instructions');
   const $resultScreen = $('#finalScore');
   let timer = 0;
+  const $scoreBoard = $('.score');
 
   //on window load,x cards are facedown and cards can't be clicked
   function initialBoard () {
@@ -58,9 +59,8 @@ $(() => {
         $display.text(minutes + ':' + seconds);
         checkResult();
         if(timer === 0) {
-
           clearInterval(timerId);
-          // $timer.addClass('ringing');
+          $('#timer').addClass('ringing');
         }
       }, 1000);
       timerIsRunning = true;
@@ -70,7 +70,7 @@ $(() => {
   function startTimer() {
     $squares.on('click', flipCard);
     $squares.on('click', playSound);
-    startStopTimer(oneMinute, $timerScreen);
+    startStopTimer(5, $timerScreen);
     $howToPlay.removeClass('pulse');
   }
   $startTime.on('click', startTimer);
@@ -128,9 +128,11 @@ $(() => {
 
   function checkResult () {
     if (timer === 0 && matchScore < 6) {
+      $scoreBoard.css('display', 'block');
       $resultScreen.text('Time is up! You are the George Constanza of memory games!');
       $('#restart').css('display', 'block');
     } else if (matchScore === 6) {
+      $scoreBoard.css('display', 'block');
       $resultScreen.text('You are a true ocean scientist!');
       clearInterval(timerId);
       $('#restart').css('display', 'block');
@@ -139,16 +141,16 @@ $(() => {
 
   //shuffling function - must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
 
-  function matchImagesToSquares() {
-    createPairs();
-    mammalsAndSounds.forEach((thingInArray, i)=> {
-      // using jQuery, grab the square with the current squareId
-      const $curentSquare = $(`#card-${thingInArray}`);
-      const currentMammal = mammals[i];
-      $curentSquare.css('background-image', `url(images/${currentMammal}`);
-      // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
-    });
-  }
+  // function matchImagesToSquares() {
+  //   createPairs();
+  //   mammalsAndSounds.forEach((thingInArray, i)=> {
+  //     // using jQuery, grab the square with the current squareId
+  //     const $curentSquare = $(`#card-${thingInArray}`);
+  //     const currentMammal = mammals[i];
+  //     $curentSquare.css('background-image', `url(images/${currentMammal}`);
+  //     // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
+  //   });
+  // }
 
   function reset () {
     mammalsAndSounds = [];
@@ -159,11 +161,12 @@ $(() => {
     timerIsRunning = false;
     $timerScreen.text('01:00');
     startStopTimer(oneMinute, $timerScreen);
+    $scoreBoard.css('display', 'none');
     $resultScreen.text('');
     for (let i=0; i < $squares.length; i++) {
       $($squares[i]).css('visibility', 'visible');
     }
-    $('#restart').css('display', 'none'); //hides the play again button
+    $restartGame.css('display', 'none'); //hides the play again button
   }
   $restartGame.on('click', reset);
 

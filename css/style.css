@@ -12,6 +12,8 @@ body {
   border-bottom: 1px solid #e6e6e6;
   display: flex;
   justify-content: center;
+  max-width: 935px;
+  margin: 0 auto;
 }
 
 .wrapper main {
@@ -154,19 +156,51 @@ main {
 }
 
 #timer {
-  border-radius: 15px;
+  border-radius: 800px;
+  width: 100px;
+  height: 100px;
   font-family: 'Mukta Vaani', sans-serif;
   text-align: center;
-  padding: 0 0 10px 0;
+  padding: 0 0 60px 0;
+  font-weight: 400;
+  text-transform: uppercase;
   margin: 0 auto;
   color: white;
-  font-weight: 400;
-  background-color: #ff6f69;
+  /* background-color: #ff6f69; */
   margin-bottom: 20px;
+  border: 2px solid white;
+}
+
+#timer .screen {
+  text-align: center;
+  font-size: 25px;
+}
+
+#timer.ringing {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+
+  20%, 80% {
+    transform: translateX(2px);
+  }
+
+  30%, 50%, 70% {
+    transform: translateX(-4px);
+  }
+
+  40%, 60% {
+    transform: translateX(4px);
+  }
 }
 
 .score {
   border-radius: 15px;
+  border: 1px solid white;
   font-family: 'Mukta Vaani', sans-serif;
   text-align: center;
   padding: 10px;
@@ -174,4 +208,5 @@ main {
   font-weight: 400;
   background-color: #ff6f69;
   margin-top: 10px;
+  display: none;
 }
