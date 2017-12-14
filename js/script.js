@@ -30,6 +30,7 @@ $(() => {
   let matchScore = 0;
   const $restartGame = $('#restart');
   const $howToPlay = $('.instructions');
+  const $resultScreen = $('#finalScore');
 
   //on window load,x cards are facedown and cards can't be clicked
   function initialBoard () {
@@ -138,7 +139,6 @@ $(() => {
   function gameWon () {
     if (matchScore === 6) {
       console.log('inside the if');
-      const $resultScreen = $('#finalScore');
       $resultScreen.text('You are a true ocean scientist!');
       clearInterval(timerId);
       $('#restart').css('display', 'block');
@@ -157,6 +157,7 @@ $(() => {
     timerIsRunning = false;
     $timerScreen.text('01:00');
     startStopTimer(oneMinute, $timerScreen);
+    $resultScreen.text('');
     for (let i=0; i < $squares.length; i++) {
       $($squares[i]).css('visibility', 'visible');
     }
