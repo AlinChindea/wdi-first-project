@@ -31,6 +31,7 @@ $(() => {
   const $restartGame = $('#restart');
   const $howToPlay = $('.instructions');
   const $resultScreen = $('#finalScore');
+  let timer = 0;
 
   //on window load,x cards are facedown and cards can't be clicked
   function initialBoard () {
@@ -40,21 +41,10 @@ $(() => {
       $card.css('background-image', 'url("images/finback-whale.png")');
     }
   }
-  //must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
 
-  function matchImagesToSquares() {
-    createPairs();
-    mammalsAndSounds.forEach((thingInArray, i)=> {
-      // using jQuery, grab the square with the current squareId
-      const $curentSquare = $(`#card-${thingInArray}`);
-      const currentMammal = mammals[i];
-      $curentSquare.css('background-image', `url(images/${currentMammal}`);
-      // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
-    });
-  }
 
   //TIMER
-  let timer = 0;
+
   function startStopTimer(duration, $display) {
     timer = duration;
     // start the timer if it is NOT running
@@ -66,8 +56,9 @@ $(() => {
         minutes = minutes < 10 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
         $display.text(minutes + ':' + seconds);
+        checkResult();
         if(timer === 0) {
-          checkResult();
+
           clearInterval(timerId);
           // $timer.addClass('ringing');
         }
@@ -79,7 +70,7 @@ $(() => {
   function startTimer() {
     $squares.on('click', flipCard);
     $squares.on('click', playSound);
-    startStopTimer(5, $timerScreen);
+    startStopTimer(oneMinute, $timerScreen);
     $howToPlay.removeClass('pulse');
   }
   $startTime.on('click', startTimer);
@@ -88,7 +79,7 @@ $(() => {
   //flipping a card
 
   function flipCard (e) {
-    if(timer <= 0) return;
+    if(timer <= 0) return; //
     const cardIdAttribute = $(e.target).attr('id');
     let cardId = parseInt(cardIdAttribute.substr(5,2));
     cardsInPlayIds.push(cardId);
@@ -108,9 +99,9 @@ $(() => {
   //play the audio sounds
 
   function playSound(e) {
-    // const filename = $(e.target).attr('id');
-    // $audio.src = `sounds/${filename}.wav`;
-    // $audio.play();
+    const filename = $(e.target).attr('id');
+    $audio.src = `sounds/${filename}.wav`;
+    $audio.play();
   }
 
   //if cards flipped are a pair, remove these from the grid; else turn them back and display "try again"
@@ -146,6 +137,18 @@ $(() => {
     }
   }
 
+  //shuffling function - must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
+
+  function matchImagesToSquares() {
+    createPairs();
+    mammalsAndSounds.forEach((thingInArray, i)=> {
+      // using jQuery, grab the square with the current squareId
+      const $curentSquare = $(`#card-${thingInArray}`);
+      const currentMammal = mammals[i];
+      $curentSquare.css('background-image', `url(images/${currentMammal}`);
+      // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
+    });
+  }
 
   function reset () {
     mammalsAndSounds = [];
