@@ -1,7 +1,7 @@
 let mammalsAndSounds = []; //an emtpy array where matched images and sounds should be pushed
 
 let gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']; //the ids of the gameboard
-const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png', 'beluga-white-whale.png', 'leopard-seal.png', 'leopard-seal.png', 'killer-whale.png', 'killer-whale.png', 'narwhal.png', 'narwhal.png', 'common-dolphin.png', 'common-dolphin.png']; //the initial images to create a minimally running game; ideally, this would be empty and the game would randomly take 6 cards from the images folder
+const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png', 'beluga-white-whale.png', 'northern-right-whale.png', 'northern-right-whale.png', 'killer-whale.png', 'killer-whale.png', 'narwhal.png', 'narwhal.png', 'common-dolphin.png', 'common-dolphin.png']; //the initial images to create a minimally running game; ideally, this would be empty and the game would randomly take 6 cards from the images folder
 
 let gameTime = 60;
 
@@ -239,15 +239,6 @@ $(() => {
     $restartGame.css('display', 'none'); //hides the play again button
   }
   $restartGame.on('click', reset);
-
-
-
-
-
-
-
-
-
 
 
 });
