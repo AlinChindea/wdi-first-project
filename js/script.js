@@ -60,7 +60,6 @@ $(() => {
     // start the timer if it is NOT running
     if(!timerIsRunning){
       timerId = setInterval(() => {
-        console.log(timerId);
         --timer;
         let minutes = parseInt(timer / 60, 10);
         let seconds = parseInt(timer % 60, 10);
@@ -68,7 +67,6 @@ $(() => {
         seconds = seconds < 10 ? '0' + seconds : seconds;
         $display.text(minutes + ':' + seconds);
         if(timer === 0) {
-          console.log(timerId);
           clearInterval(timerId);
           // $timer.addClass('ringing');
         }
@@ -161,7 +159,7 @@ $(() => {
     for (let i=0; i < $squares.length; i++) {
       $($squares[i]).css('visibility', 'visible');
     }
-    // $('#restart').css('display', 'none'); //hides the play again button
+    $('#restart').css('display', 'none'); //hides the play again button
   }
   $restartGame.on('click', reset);
 
