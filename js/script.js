@@ -54,9 +54,9 @@ $(() => {
   }
 
   //TIMER
-
+  let timer = 0;
   function startStopTimer(duration, $display) {
-    let timer = duration;
+    timer = duration;
     // start the timer if it is NOT running
     if(!timerIsRunning){
       timerId = setInterval(() => {
@@ -67,6 +67,7 @@ $(() => {
         seconds = seconds < 10 ? '0' + seconds : seconds;
         $display.text(minutes + ':' + seconds);
         if(timer === 0) {
+          checkResult();
           clearInterval(timerId);
           // $timer.addClass('ringing');
         }
@@ -78,7 +79,7 @@ $(() => {
   function startTimer() {
     $squares.on('click', flipCard);
     $squares.on('click', playSound);
-    startStopTimer(oneMinute, $timerScreen);
+    startStopTimer(5, $timerScreen);
     $howToPlay.removeClass('pulse');
   }
   $startTime.on('click', startTimer);
@@ -87,6 +88,7 @@ $(() => {
   //flipping a card
 
   function flipCard (e) {
+    if(timer <= 0) return;
     const cardIdAttribute = $(e.target).attr('id');
     let cardId = parseInt(cardIdAttribute.substr(5,2));
     cardsInPlayIds.push(cardId);
@@ -106,9 +108,9 @@ $(() => {
   //play the audio sounds
 
   function playSound(e) {
-    const filename = $(e.target).attr('id');
-    $audio.src = `sounds/${filename}.wav`;
-    $audio.play();
+    // const filename = $(e.target).attr('id');
+    // $audio.src = `sounds/${filename}.wav`;
+    // $audio.play();
   }
 
   //if cards flipped are a pair, remove these from the grid; else turn them back and display "try again"
@@ -122,7 +124,6 @@ $(() => {
       $(`#card-${cardsInPlayIds[0]}`).css('visibility', 'hidden');
       $(`#card-${cardsInPlayIds[1]}`).css('visibility', 'hidden');
       matchScore += 1;
-      gameWon();
     } else {
       $(`#card-${cardsInPlayIds[0]}`).css('backgroundImage', 'url("images/finback-whale.png")');
       $(`#card-${cardsInPlayIds[1]}`).css('backgroundImage', 'url("images/finback-whale.png")');
@@ -134,14 +135,14 @@ $(() => {
     cardsInPlayIds = [];
   }
 
-  function gameWon () {
-    if (matchScore === 6) {
-      console.log('inside the if');
+  function checkResult () {
+    if (timer === 0 && matchScore < 6) {
+      $resultScreen.text('Time is up! You are the George Constanza of memory games!');
+      $('#restart').css('display', 'block');
+    } else if (matchScore === 6) {
       $resultScreen.text('You are a true ocean scientist!');
       clearInterval(timerId);
       $('#restart').css('display', 'block');
-    } else {
-      flipCard;
     }
   }
 
@@ -162,9 +163,6 @@ $(() => {
     $('#restart').css('display', 'none'); //hides the play again button
   }
   $restartGame.on('click', reset);
-
-
-
 
 
 
