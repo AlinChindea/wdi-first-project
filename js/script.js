@@ -211,11 +211,22 @@ $(() => {
     mammalsAndSounds = [];
     matchScore = 0;
     initialBoard();
-    // matchImagesToSquares();
-    gameTime = 60;
-    timerIsRunning = false;
-    $timerScreen.text('01:00');
-    startStopTimer(gameTime, $timerScreen);
+    if (gameMode === 'Easy') {
+      gameTime = 60;
+      timerIsRunning = false;
+      $timerScreen.text('01:00');
+      startStopTimer(gameTime, $timerScreen);
+    } else if (gameMode === 'Hard') {
+      gameTime = 30;
+      timerIsRunning = false;
+      $timerScreen.text('00:30');
+      startStopTimer(gameTime, $timerScreen);
+    } else if (gameMode === 'Extreme') {
+      gameTime = 15;
+      timerIsRunning = false;
+      $timerScreen.text('00:15');
+      startStopTimer(gameTime, $timerScreen);
+    }
     $scoreBoard.css('display', 'none');
     $resultScreen.text('');
     for (let i=0; i < $squares.length; i++) {
