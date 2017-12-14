@@ -178,17 +178,21 @@ $(() => {
     }
     if (timer === 0 && matchScore < 6) {
       $resultScreen.text('Time is up! You are the George Constanza of memory games!');
+      $scoreBoard.css('backgroundImage', 'url("https://goo.gl/m4541N")');
       $('#restart').css('display', 'block');
     } else if (matchScore === 6 && gameMode === 'Extreme') {
       $resultScreen.text('You are Jacques Cousteau of memory games!');
       clearInterval(timerId);
+      $scoreBoard.css('backgroundImage', 'url("images/cousteau.jpg")');
       $('#restart').css('display', 'block');
     } else if (matchScore === 6 && gameMode === 'Hard') {
       $resultScreen.text('You are a memory champion!');
       clearInterval(timerId);
+      $scoreBoard.css('backgroundImage', 'url("images/seaturtle.jpg")');
       $('#restart').css('display', 'block');
     } else if (matchScore === 6 && gameMode === 'Easy') {
-      $resultScreen.text('You are a true ocean scientist!');
+      $resultScreen.text('You have it pretty easy!');
+      $scoreBoard.css('backgroundImage', 'url("images/sloth.jpg")');
       clearInterval(timerId);
       $('#restart').css('display', 'block');
     }

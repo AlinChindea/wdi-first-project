@@ -39,7 +39,7 @@ h1 {
   width: 20%;
   font-family: 'Bungee Inline', cursive,;
   font-weight: 700;
-  color: 	#ff6f69;
+  color: 	black;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: inherit;
@@ -207,17 +207,20 @@ main {
 
 .score {
   border-radius: 15px;
+  width: 350px;
+  height: 200px;
   border: 1px solid white;
   font-family: 'Mukta Vaani', sans-serif;
   text-align: center;
   padding: 10px;
   color: white;
   font-weight: 400;
-  background-color: #ff6f69;
+  /* background-color: #ff6f69; */
   margin-top: 10px;
+  position: absolute;
   display: none;
-  /* background-image: url("../images/main-background.jpeg");
+  background-image: url("../images/main-background.jpeg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat;
 }
