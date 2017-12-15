@@ -1,7 +1,7 @@
 
 ![ga_cog_large_red_rgb](https://cloud.githubusercontent.com/assets/40461/8183776/469f976e-1432-11e5-8199-6ac91363302b.png)
 
-# #Whale, Whale, Whale 
+# Whale, Whale, Whale 
 ![](/Users/iGingerino/Desktop/Screen Shot 2017-12-14 at 11.05.29 PM.png)
 
 ## WHAT 
@@ -60,7 +60,7 @@ Several challenges have impacted the development process.
 - refactor, refactor, refactor 
 
 
-##Acknowledgments
+## Acknowledgments
 
 - this project would not have come to fruition without the brilliant support from General Assembly's instructional team. Kudos to Ben, Emily, Gerri and Guy.
 - grateful to my ocean scientist partner for the idea and images and sounds database
