@@ -60,3 +60,8 @@ Several challenges have impacted the development process.
 - refactor, refactor, refactor 
 
 
+##Acknowledgments
+
+- this project would not have come to fruition without the brilliant support from General Assembly's instructional team. Kudos to Ben, Emily, Gerri and Guy.
+- grateful to my ocean scientist partner for the idea and images and sounds database
+![A big shark thank you to them](https://vignette.wikia.nocookie.net/theloudhouse/images/a/a6/Thank_you.gif)
