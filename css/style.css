@@ -37,7 +37,7 @@ h1 {
 #display {
   display: inline-block;
   width: 20%;
-  font-family: 'Bungee Inline', cursive,;
+  font-family: 'Bungee Inline', cursive;
   font-weight: 700;
   color: 	black;
   text-transform: uppercase;
@@ -54,7 +54,6 @@ h1 {
   justify-content: space-between;
   color: black;
   padding: 0 15px;
-  /* z-index: 2; */
 }
 
 .selected {
@@ -86,10 +85,6 @@ button:hover {
   background: #ff6f69;
 }
 
-/* button.instructions {
-  z-index: 2;
-} */
-
 .hoverdown {
   position: relative;
   display: inline-block;
@@ -120,10 +115,6 @@ button:hover {
 main {
   padding: 30px 20px 0;
   margin-right: 0;
-  /* background-image: url(images/main-background.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
   display: flex;
   justify-content: center;
   background-color: #99ccff;
@@ -172,7 +163,6 @@ main {
   text-transform: uppercase;
   margin: 0 auto;
   color: white;
-  /* background-color: #ff6f69; */
   margin-top: 30px;
   margin-bottom: 20px;
   border: 2px solid white;
