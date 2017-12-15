@@ -13,7 +13,7 @@ This is a fun and active way of improving your memory and concentration. Althoug
 ## HOW
 
 ### Installation and setup
-You can run the project locally by downloading or clonning the [Github repo](https://github.com/EagleEye182/wdi-first-project) or you can view it [online on Heroku](#). 
+You can run the project locally by downloading or clonning the [Github repo](https://github.com/EagleEye182/wdi-first-project) or you can view it [online on Heroku](http://whale-whale-whale.herokuapp.com/). 
 
 ### Technologies
 This initial version of the project was developed within 5 days using: 

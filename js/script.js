@@ -108,6 +108,7 @@ $(() => {
     $squares.on('click', playSound);
     startStopTimer(gameTime, $timerScreen);
     $howToPlay.removeClass('pulse');
+    $modeButtons.css('visibility', 'hidden');
   }
   $startTime.on('click', startTimer);
 
