@@ -12,28 +12,29 @@ else if moveCount > 12, display
 
 if shuffle works, check that audio matches the flipped card
 
-      // $scoreBoard.css('backgroundImage', 'url("https://goo.gl/m4541N")');
+for the shuffling part:
 
-three level winning message
-function checkResult () {
-  if (timer === 0 && matchScore < 6) {
-    $scoreBoard.css('display', 'block');
-    $resultScreen.text('Time is up! You are the George Constanza of memory games!');
-    $('#restart').css('display', 'block');
-  } else if (matchScore === 6 && modeExtreme) {
-    $scoreBoard.css('display', 'block');
-    $resultScreen.text('You are Jacques Cousteau of memory games!');
-    clearInterval(timerId);
-    $('#restart').css('display', 'block');
-  } else if (matchScore === 6 && modeHard) {
-    $scoreBoard.css('display', 'block');
-    $resultScreen.text('You are a memory champion!');
-    clearInterval(timerId);
-    $('#restart').css('display', 'block');
-  } else if (matchScore === 6 && modeEasy) {
-    $scoreBoard.css('display', 'block');
-    $resultScreen.text('You are a true ocean scientist!');
-    clearInterval(timerId);
-    $('#restart').css('display', 'block');
+// function creating random ids in the mammalsAndSounds array - needed to randomize cards and reshuffle
+function createPairs() {
+  mammalsAndSounds = [];
+  while (gameBoard.length > 0) {
+    const randomNumber = Math.floor(Math.random() * gameBoard.length);
+    const randomCard = gameBoard.splice(randomNumber, 1)[0];
+    mammalsAndSounds.push(randomCard);
   }
+  gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 }
+
+
+//shuffling function - must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
+
+// function matchImagesToSquares() {
+//   createPairs();
+//   mammalsAndSounds.forEach((thingInArray, i)=> {
+//     // using jQuery, grab the square with the current squareId
+//     const $curentSquare = $(`#card-${thingInArray}`);
+//     const currentMammal = mammals[i];
+//     $curentSquare.css('background-image', `url(images/${currentMammal}`);
+//     // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
+//   });
+// }

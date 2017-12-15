@@ -16,7 +16,7 @@
   </audio>
   <div class="wrapper">
     <header>
-      <h1>Whale, whale, whale</h1>
+      <h1 class="animated bounceInLeft">Whale, whale, whale</h1>
       <nav id="stripe">
         <button id="reset">New Game</button>
         <div class="hoverdown">
@@ -35,6 +35,9 @@
   </div>
   <div class="wrapper">
     <main>
+      <div class="score">
+      <span id='finalScore'></span>
+      </div>
       <div class="grid">
         <div class="square" id='card-1'></div>
         <div class="square" id='card-2'></div>
@@ -55,9 +58,6 @@
           <!-- <button id="reset"></button> -->
           <button id="startStop"></button>
           <div class="screen"><span id='time'>01:00</span></div>
-        </div>
-        <div class="score">
-        <span id='finalScore'></span>
         </div>
       </div>
     </main>

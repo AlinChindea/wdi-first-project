@@ -5,17 +5,6 @@ const mammals = ['bearded-seal.png', 'bearded-seal.png', 'beluga-white-whale.png
 
 let gameTime = 60;
 
-// function creating random ids in the mammalsAndSounds array - needed to randomize cards and reshuffle
-function createPairs() {
-  mammalsAndSounds = [];
-  while (gameBoard.length > 0) {
-    const randomNumber = Math.floor(Math.random() * gameBoard.length);
-    const randomCard = gameBoard.splice(randomNumber, 1)[0];
-    mammalsAndSounds.push(randomCard);
-  }
-  gameBoard = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-}
-
 
 $(() => {
   const $modeButtons = $('.mode');
@@ -55,6 +44,7 @@ $(() => {
       $($modeButtons[i]).on('click', function(){
         $modeHard.removeClass('selected');
         $modeEasy.removeClass('selected');
+        $modeExtreme.removeClass('selected');
         this.classList.add('selected');
       });
     }
@@ -197,19 +187,6 @@ $(() => {
       $('#restart').css('display', 'block');
     }
   }
-
-  //shuffling function - must match index[0] of const mammals with indexes [0] and [1] of the randomCard; index[1] of mammals with indexes 2 and 3 and so on
-
-  // function matchImagesToSquares() {
-  //   createPairs();
-  //   mammalsAndSounds.forEach((thingInArray, i)=> {
-  //     // using jQuery, grab the square with the current squareId
-  //     const $curentSquare = $(`#card-${thingInArray}`);
-  //     const currentMammal = mammals[i];
-  //     $curentSquare.css('background-image', `url(images/${currentMammal}`);
-  //     // using jQuery again, give that square a background image of the item in mammals that has the same index (not as squareId but as index which has been passed in as an argument)👆
-  //   });
-  // }
 
   function reset () {
     mammalsAndSounds = [];
