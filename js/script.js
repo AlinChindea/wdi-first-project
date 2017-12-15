@@ -28,8 +28,7 @@ $(() => {
   let timer = 0;
   const $scoreBoard = $('.score');
 
-
-  //on window load,x cards are facedown and cards can't be clicked
+  //on window load, cards are facedown and cards can't be clicked
   function initialBoard () {
     for (let i = 1; i <= mammals.length; i++) {
       const $card = $(`#card-${i}`);
@@ -79,7 +78,7 @@ $(() => {
   modeExtreme();
 
 
-  //TIMER
+  //Time is setup
 
   function startStopTimer(duration, $display) {
     timer = duration;
