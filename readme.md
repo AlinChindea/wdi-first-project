@@ -2,7 +2,7 @@
 ![ga_cog_large_red_rgb](https://cloud.githubusercontent.com/assets/40461/8183776/469f976e-1432-11e5-8199-6ac91363302b.png)
 
 # Whale, Whale, Whale 
-![](/Users/iGingerino/Desktop/Screen Shot 2017-12-14 at 11.05.29 PM.png)
+![](https://i.imgur.com/R8HInl1.png)
 
 ## WHAT 
 'Whale, whale, whale' is the name of my first web development course project utilising basic HTML, CSS and mix of vanilla javascript and jQuery. In brief, this is a simple memory game with marine mammals. All images are laid face down on a surface and two images are flipped face up over each turn. The object of the game is to turn over pairs of matching cards and sounds before the time runs out.
