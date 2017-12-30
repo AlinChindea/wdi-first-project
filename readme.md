@@ -5,7 +5,7 @@
 ![](https://i.imgur.com/R8HInl1.png)
 
 ## WHAT 
-'Whale, whale, whale' is the name of my first web development course project utilising basic HTML, CSS and mix of vanilla javascript and jQuery. In brief, this is a simple memory game with marine mammals. All images are laid face down on a surface and two images are flipped face up over each turn. The object of the game is to turn over pairs of matching cards and sounds before the time runs out.
+'Whale, whale, whale' is the name of my first web development course project utilising basic HTML, CSS and a mix of vanilla javascript and jQuery. In brief, this is a simple memory game with marine mammals. All images are laid face down on a surface and two images are flipped face up over each turn. The object of the game is to turn over pairs of matching cards and sounds before the time runs out.
 
 ## WHY
 This is a fun and active way of improving your memory and concentration. Although designed for young children, adults may find it challenging and stimulating as well. It ca be employed as an educational game; thus, educators can incorporate it in their classroom delivery. 
@@ -62,6 +62,6 @@ Several challenges have impacted the development process.
 
 ## Acknowledgments
 
-- this project would not have come to fruition without the brilliant support from General Assembly's instructional team. Kudos to Ben, Emily, Gerri and Guy.
+- this project would not have come to fruition without the brilliant support from General Assembly's instructional team. Kudos to Ben, Emily, Gerry and Guy.
 - grateful to my ocean scientist partner for the idea and images and sounds database
 ![A big shark thank you to them](https://vignette.wikia.nocookie.net/theloudhouse/images/a/a6/Thank_you.gif)
