@@ -128,7 +128,7 @@ $(() => {
         checkForMatch();
         // Empty cards in play array for next try
         cardsInPlay = [];
-      }, 800);
+      }, 700);
     }
   }
 
@@ -147,7 +147,7 @@ $(() => {
       $messageDisplay.text('Science on!');
       setTimeout( ()=> {
         $messageDisplay.text('');
-      }, 800);
+      }, 700);
       $(`#card-${cardsInPlayIds[0]}`).css('visibility', 'hidden');
       $(`#card-${cardsInPlayIds[1]}`).css('visibility', 'hidden');
       matchScore += 1;
@@ -157,7 +157,7 @@ $(() => {
       $messageDisplay.text('Try again!');
       setTimeout( ()=> {
         $messageDisplay.text('');
-      }, 800);
+      }, 700);
     }
     cardsInPlayIds = [];
   }
