@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <title>Whale, Whale, Whale</title>
   <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Chelsea+Market|Mukta+Vaani" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
   <script type="text/javascript" src="./js/script.js"></script>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
@@ -20,7 +22,7 @@
       <nav id="stripe">
         <button id="reset">New Game</button>
         <div class="hoverdown">
-          <button class="instructions animated infinite pulse">How to play</button>
+          <button class="instructions animated infinite pulse"><i class="fas fa-play-circle"></i> How to play</button>
           <div class="hoverdown-content">
             <p>This is a simple memory game with marine mammals and matching sounds. All images are laid face down on a surface and two images are flipped face up over each turn. The object of the game is to turn over pairs of matching cards before the time runs out. First, select your level and then click on New Game to start. Good luck!</p>
           </div>
@@ -55,7 +57,6 @@
 
       <div class ="timescore">
         <div id="timer">
-          <!-- <button id="reset"></button> -->
           <button id="startStop"></button>
           <div class="screen"><span id='time'>01:00</span></div>
         </div>
